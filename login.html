@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body {
+            margin-top: 100px;
+        }
+
+        form {
+            background: #de818175;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(19, 10, 10, 0.623);
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <label for="">User Name</label>
+        <input type="text" name="" id="">
+
+        <label for="">Password</label>
+        <input type="password" name="" id="">
+
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        let loginClick = addEventListener("submit", (e) => {
+            e.preventDefault()
+            let username = e.target[0].value
+            let pass = e.target[1].value
+            fetch("http://localhost:3000/posts", {
+                method: "get"
+            }).then((val) => val.json()).then((val) => {
+                for (i = 0; i < val.length; i++) {
+                    if (username == val[i].uname && pass == val[i].password) {
+                        window.location.assign("./homepage.html")
+                    } else {
+                        alert("Incorrect username and password")
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
